@@ -30,6 +30,8 @@
 
     <div class="card-body">
         <div class="card-text">
+            <div class="fw-bold">Product: <span><a
+                    href="{% url 'detail_product' feedback.product.pk %}">{{ feedback.product.title }}</a></span></div>
             <div class="fw-bold ">Rating:
                 <span class="text-warning">
                     {% my_range feedback.rate as range %}
@@ -40,6 +42,9 @@
 
                 </span>
             </div>
+            {% if is_moderator %}
+                <div class="fw-bold">Moderated: <span>{{ feedback.is_moderated }}</span></div>
+            {% endif %}
             {{ feedback.description }}
         </div>
     </div>

@@ -10,7 +10,7 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         product = instance.product
 
-        product_feedbacks = product.feedbacks.values_list('rate', flat=True)
+        product_feedbacks = product.feedbacks.filter(is_moderated=True).values_list('rate', flat=True)
         product.avg = get_avg(product_feedbacks)
         print(get_avg(product_feedbacks))
 

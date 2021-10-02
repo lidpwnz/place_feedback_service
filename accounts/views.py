@@ -27,6 +27,14 @@ class ProfileView(generic.DetailView):
     context_object_name = 'user_obj'
     template_name = 'user/profile.html'
 
+    def get_context_data(self, **kwargs):
+        if self.request.user == self.object:
+            feedbacks = self.object.feedbacks.all()
+        else:
+            feedbacks = self.object.feedbacks.filter(is_moderated=True)
+
+        return super(ProfileView, self).get_context_data(feedbacks=feedbacks)
+
 
 class UpdateUser(UserPassesTestMixin, generic.UpdateView):
     model = User

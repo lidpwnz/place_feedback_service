@@ -1,4 +1,6 @@
 from django import forms
+
+from accounts.helpers import is_moderator
 from core.helpers import get_widget_attrs
 from app.models import Product, Feedback
 
@@ -18,8 +20,4 @@ class ProductForm(forms.ModelForm):
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ['description', 'rate']
-        widgets = {
-            'description': forms.Textarea(attrs=get_widget_attrs()),
-            'rate': forms.NumberInput(attrs=get_widget_attrs())
-        }
+        fields = ['description', 'rate', 'is_moderated']

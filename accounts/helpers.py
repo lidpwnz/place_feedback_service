@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import Group
 from django.core.exceptions import ValidationError
 
 
@@ -13,3 +14,8 @@ class UserValidationMixin(forms.ModelForm):
             raise ValidationError('First name or last name required!')
 
         return self.cleaned_data
+
+
+def is_moderator(user):
+    moderators_group = Group.objects.get(name='Moderators')
+    return moderators_group in user.groups.all()

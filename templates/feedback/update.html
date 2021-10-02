@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% include 'partials/form.html' %}
+    <form action="{{ request.get_full_path }}" method="post">
+        {% csrf_token %}
+        {% include 'partials/feedback_form.html' %}
+    </form>
 {% endblock %}

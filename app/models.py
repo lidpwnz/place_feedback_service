@@ -24,11 +24,14 @@ class Product(models.Model):
 
 
 class Feedback(models.Model):
+    BOOLEAN_CHOICES = [(1, 'Yes'), (0, 'No')]
+
     author = models.ForeignKey(get_user_model(), on_delete=models.SET_DEFAULT, default='AnonymousUser',
                                related_name='feedbacks')
     product = models.ForeignKey('app.Product', on_delete=models.CASCADE, related_name='feedbacks')
     description = models.TextField()
     rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    is_moderated = models.BooleanField(default=False, choices=BOOLEAN_CHOICES)
 
     def __str__(self):
         return f'{self.product}, {self.rate} | {self.author}: {self.description}'

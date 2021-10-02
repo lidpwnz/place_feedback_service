@@ -19,9 +19,6 @@
         </div>
     </div>
     <div>
-        {% for feedback in user_obj.feedbacks.all %}
-            {% include 'partials/user_feedback.html' %}
-        {% endfor %}
-
+    {% include 'partials/show_feedbacks.html' with feedbacks=user_obj.feedbacks.all %}
     </div>
 {% endblock %}
