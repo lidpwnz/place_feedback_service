@@ -1,0 +1,33 @@
+{% extends 'accounts_base.html' %}
+
+
+{% block title %}
+    <h3 id="form-title">REGISTER ACCOUNT</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-column">
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+
+            {% include 'partials/form.html' with fields_only=True %}
+
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <input class="btn login_btn" type="submit" value="Register Account">
+            </div>
+        </form>
+        <div class="mt-4">
+            <div class="d-flex justify-content-center links">
+                Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const form_fields = document.getElementsByTagName('input')
+
+        for (let field of form_fields) {
+            console.log(field)
+            field.className += ' form-control mb-3'
+        }
+    </script>
+{% endblock %}

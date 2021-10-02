@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-3 mt-2 d-flex align-items-end">
+            {% if user == user_obj %}
+                <a class="btn btn-primary w-100 mt-2" href="{% url 'change_password' user_obj.pk %}">
+                    Change Password
+                </a>
+                <a class="btn btn-primary w-100" href="{% url 'update_user' user_obj.pk %}">Edit</a>
+            {% endif %}
+        </div>
+        <div class="col-9">
+            <h1>{{ user_obj.username }}'s page</h1>
+            <p>Username: {{ user_obj.username }}</p>
+            <p>First name: {{ user_obj.first_name }}</p>
+            <p>Last name: {{ user_obj.last_name }}</p>
+            <p>Email: {{ user_obj.email }}</p>
+        </div>
+    </div>
+    <div>
+        {% for feedback in user_obj.feedbacks.all %}
+            {% include 'partials/user_feedback.html' %}
+        {% endfor %}
+
+    </div>
+{% endblock %}

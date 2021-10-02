@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'partials/form.html' %}
+    <script>
+        const form_fields = document.getElementsByTagName('input')
+
+        for (let field of form_fields) {
+            console.log(field)
+            field.className += ' form-control mb-3'
+        }
+    </script>
+{% endblock %}
