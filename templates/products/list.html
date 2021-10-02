@@ -8,6 +8,7 @@
             <th scope="col">Title</th>
             <th scope="col">Category</th>
             <th scope="col">Description</th>
+            <th scope="col">Average Rate</th>
             <th scope="col">Update</th>
             <th scope="col">Delete</th>
         </tr>
@@ -23,6 +24,9 @@
                 <td>
                     <a href="{% url 'detail_product' product.pk %}"
                        class="text-secondary">{{ product.description | slice:':15' }}...</a>
+                </td>
+                <td>
+                    <p>{{ product.avg }}</p>
                 </td>
                 <td>
                     <a href="{% url 'update_product' product.pk %}" class="btn btn-primary">Update</a>

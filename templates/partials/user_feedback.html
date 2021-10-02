@@ -1,0 +1,51 @@
+{% load basic %}
+<style>
+    .post-avatar {
+        width: 40px;
+        height: 40px;
+        padding: 3px;
+    }
+</style>
+<div class="card my-4">
+    <div class="d-flex justify-content-between align-items-center card-header">
+        <div class="d-flex align-items-center">
+            <img src="{{ feedback.author.image.url }}" alt="" class="post-avatar">
+            <h5>
+                {{ feedback.author.username }}
+            </h5>
+        </div>
+        <div>
+            <p class="text-secondary">
+                {{ feedback.author.email }}
+            </p>
+
+            {% if user == feedback.author or user.is_staff %}
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'update_feedback' feedback.pk %}" class="me-2">
+                        Update
+                    </a>
+                    <form action="{% url 'delete_feedback' feedback.pk %}" method="post">
+                        {% csrf_token %}
+                        {% include 'partials/delete_button.html' %}
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="card-text">
+            <div class="fw-bold ">Rating:
+                <span class="text-warning">
+                    {% my_range feedback.rate as range %}
+
+                    {% for foo in range %}
+                        <i class="fas fa-star"></i>
+                    {% endfor %}
+
+                </span>
+            </div>
+            {{ feedback.description }}
+        </div>
+    </div>
+</div>

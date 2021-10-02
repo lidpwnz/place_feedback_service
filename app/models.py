@@ -17,6 +17,7 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to=settings.AVATAR_FOLDER, null=True, blank=True,
                               default=settings.AVATAR_DEFAULT_VALUE)
+    avg = models.FloatField(null=True, blank=True, default=0)
 
     def __str__(self):
         return f'{self.title} | {self.category} | {self.description} | {self.image.url}'

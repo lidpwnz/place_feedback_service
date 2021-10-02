@@ -1,4 +1,6 @@
 from django.views import generic
+
+from app.forms import FeedbackForm
 from app.helpers import ProductAttrsMixin
 
 
@@ -8,6 +10,9 @@ class CreateProduct(ProductAttrsMixin, generic.CreateView):
 
 class DetailProduct(ProductAttrsMixin, generic.DetailView):
     template_name = 'products/detail.html'
+
+    def get_context_data(self, **kwargs):
+        return super(DetailProduct, self).get_context_data(form=FeedbackForm())
 
 
 class ListProduct(ProductAttrsMixin, generic.ListView):

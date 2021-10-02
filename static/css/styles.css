@@ -114,3 +114,10 @@
   border: unset;
   width: 100%;
 }
+
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+}

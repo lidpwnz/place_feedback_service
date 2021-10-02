@@ -1,16 +1,41 @@
 {% extends 'base.html' %}
+{% load basic %}
 
 {% block content %}
-    <div class="row mt-5">
+    <div class="row my-5">
         <div class="col-3">
             <img src="{{ product.image.url }}" alt="{{ product.title }}" class="avatar w-100">
         </div>
         <div class="col-9">
             <h2>{{ product.title }}</h2>
             <small class="text-secondary">{{ product.category }}</small>
+            <h5>
+                Average rate:
+                {% my_range product.avg as range %}
+                <span class="text-warning">
+
+                    {% for _ in range %}
+                        <i class="fas fa-star"></i>
+                    {% endfor %}
+                </span>
+
+            </h5>
             <p>
                 {{ product.description }}
             </p>
         </div>
+    </div>
+    <div>
+        <h2 class="text-center">Feedbacks</h2>
+        <form action="{% url 'create_feedback' product.pk %}" method="post">
+            {% csrf_token %}
+            {% include 'partials/form.html' with fields_only=True is_hidden_not_needed=True %}
+
+            {% include 'partials/submit_button.html' %}
+        </form>
+        {% for feedback in product.feedbacks.all %}
+            {% include 'partials/user_feedback.html' %}
+        {% endfor %}
+
     </div>
 {% endblock %}
