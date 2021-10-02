@@ -24,10 +24,11 @@
     "model": "app.product",
     "pk": 1,
     "fields": {
-        "title": "Burger",
+        "title": "Burger312",
         "category": 1,
         "description": "Hello world",
-        "image": "user_avatars/conan_ataUg0Q.jpg"
+        "image": "user_avatars/conan_ataUg0Q.jpg",
+        "avg": 3.25
     }
 },
 {
@@ -37,7 +38,8 @@
         "title": "Burger",
         "category": 1,
         "description": "Hello world",
-        "image": "user_avatars/conan_3QjSMtJ.jpg"
+        "image": "user_avatars/conan_3QjSMtJ.jpg",
+        "avg": 0.0
     }
 },
 {
@@ -47,7 +49,8 @@
         "title": "Cola",
         "category": 2,
         "description": "Кола - напиток, без которого не могут обойтись современные люди.\r\nЭто один из самых популярных напитков в России.\r\nЕго можно купить в любом магазине, а также сделать самостоятельно.\r\nДля его приготовления не потребуются особые навыки и знания.\r\nСостав этого напитка на 95% состоит из воды, поэтому его легко приготовить в любой момент.\r\nНесмотря на свою популярность, напиток имеет и ряд недостатков.\r\nВ этой статье мы рассмотрим основные из них, чтобы вы могли сделать правильный выбор.",
-        "image": "user_avatars/python_logo.webp"
+        "image": "user_avatars/python_logo.webp",
+        "avg": 3.5
     }
 },
 {
@@ -57,7 +60,19 @@
         "title": "iPhone XS",
         "category": 3,
         "description": "iPhone Xs и iPhone Xs Max - безрамочные смартфоны с потрясающей камерой, но они также имеют два недостатка, которые делают их очень привлекательными для покупки.\r\nОдин из них - то, что вы не можете менять батарею.\r\nВ то время как вы можете снимать селфи лицом к лицу и использовать Face ID, вам нужно будет ждать, когда батарея станет полностью разряженной или она полностью разрядится, чтобы изменить аккумулятор.",
-        "image": "user_avatars/celery_logo.png"
+        "image": "user_avatars/celery_logo.png",
+        "avg": 1.0
+    }
+},
+{
+    "model": "app.product",
+    "pk": 5,
+    "fields": {
+        "title": "Pizza",
+        "category": 1,
+        "description": "Pizza is the most popular dish in the world",
+        "image": "user_avatars/photo_2021-04-24_23.09.26.jpeg",
+        "avg": 0.0
     }
 },
 {
@@ -66,8 +81,8 @@
     "fields": {
         "author": 1,
         "product": 1,
-        "description": "На один раз сойдет",
-        "rate": 5
+        "description": "На один раз сойдет321",
+        "rate": 4
     }
 },
 {
@@ -88,6 +103,76 @@
         "product": 4,
         "description": "Фигня",
         "rate": 1
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 4,
+    "fields": {
+        "author": 1,
+        "product": 1,
+        "description": "dasdasdas",
+        "rate": 2
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 5,
+    "fields": {
+        "author": 1,
+        "product": 1,
+        "description": "dasdasdasdas",
+        "rate": 2
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 6,
+    "fields": {
+        "author": 1,
+        "product": 1,
+        "description": "dasdasdasfasdsadas",
+        "rate": 2
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 7,
+    "fields": {
+        "author": 1,
+        "product": 1,
+        "description": "dasdgasfsadasd312312",
+        "rate": 5
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 8,
+    "fields": {
+        "author": 1,
+        "product": 1,
+        "description": "asfafadasdas",
+        "rate": 5
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 9,
+    "fields": {
+        "author": 1,
+        "product": 4,
+        "description": "1dasdas",
+        "rate": 1
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 14,
+    "fields": {
+        "author": 1,
+        "product": 3,
+        "description": "dasdasfasdas",
+        "rate": 2
     }
 }
 ]

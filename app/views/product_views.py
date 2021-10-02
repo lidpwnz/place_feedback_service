@@ -1,11 +1,11 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views import generic
-
 from app.forms import FeedbackForm
 from app.helpers import ProductAttrsMixin
 
 
-class CreateProduct(ProductAttrsMixin, generic.CreateView):
-    pass
+class CreateProduct(ProductAttrsMixin, PermissionRequiredMixin, generic.CreateView):
+    permission_required = 'app.add_product'
 
 
 class DetailProduct(ProductAttrsMixin, generic.DetailView):
@@ -20,9 +20,9 @@ class ListProduct(ProductAttrsMixin, generic.ListView):
     context_object_name = 'products'
 
 
-class UpdateProduct(ProductAttrsMixin, generic.UpdateView):
-    pass
+class UpdateProduct(ProductAttrsMixin, PermissionRequiredMixin, generic.UpdateView):
+    permission_required = 'app.change_product'
 
 
-class DeleteProduct(ProductAttrsMixin, generic.DeleteView):
-    pass
+class DeleteProduct(ProductAttrsMixin, PermissionRequiredMixin, generic.DeleteView):
+    permission_required = 'app.delete_product'

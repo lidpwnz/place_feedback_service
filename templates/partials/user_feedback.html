@@ -11,17 +11,20 @@
                 {{ feedback.author.email }}
             </p>
 
-            {% if user == feedback.author or user.is_staff %}
-                <div class="d-flex align-items-center">
-                    <a href="{% url 'update_feedback' feedback.pk %}" class="me-2">
+            <div class="d-flex align-items-center">
+                {% if user == feedback.author or perms.app.change_feedback %}
+                    <a href="{% url 'update_feedback' feedback.pk %}" class="me-2 btn btn-primary">
                         Update
                     </a>
+                {% endif %}
+
+                {% if user == feedback.author or perms.app.delete_feedback %}
                     <form action="{% url 'delete_feedback' feedback.pk %}" method="post">
                         {% csrf_token %}
                         {% include 'partials/delete_button.html' %}
                     </form>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
     </div>
 

@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from app.helpers import FeedbackAttrsMixin
 from app.models import Product
 
 
-class CreateFeedback(FeedbackAttrsMixin, generic.CreateView):
+class CreateFeedback(FeedbackAttrsMixin, LoginRequiredMixin, generic.CreateView):
     template_name = 'products/detail.html'
 
     def form_valid(self, form):
@@ -20,9 +21,13 @@ class CreateFeedback(FeedbackAttrsMixin, generic.CreateView):
         return render(self.request, self.template_name, context)
 
 
-class UpdateFeedback(FeedbackAttrsMixin, generic.UpdateView):
+class UpdateFeedback(FeedbackAttrsMixin, UserPassesTestMixin, generic.UpdateView):
     template_name = 'feedback/update.html'
 
+    def test_func(self):
+        return self.request.user == self.get_object().author or self.request.user.has_perm('app.change_feedback')
 
-class DeleteFeedback(FeedbackAttrsMixin, generic.DeleteView):
-    pass
+
+class DeleteFeedback(FeedbackAttrsMixin, UserPassesTestMixin, generic.DeleteView):
+    def test_func(self):
+        return self.request.user == self.get_object().author or self.request.user.has_perm('app.delete_feedback')

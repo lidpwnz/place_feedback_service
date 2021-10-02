@@ -9,8 +9,13 @@
             <th scope="col">Category</th>
             <th scope="col">Description</th>
             <th scope="col">Average Rate</th>
-            <th scope="col">Update</th>
-            <th scope="col">Delete</th>
+            {% if perms.app.change_product %}
+                <th scope="col">Update</th>
+            {% endif %}
+
+            {% if perms.app.delete_product %}
+                <th scope="col">Delete</th>
+            {% endif %}
         </tr>
         </thead>
         <tbody>
@@ -28,15 +33,21 @@
                 <td>
                     <p>{{ product.avg }}</p>
                 </td>
-                <td>
-                    <a href="{% url 'update_product' product.pk %}" class="btn btn-primary">Update</a>
-                </td>
-                <td>
-                    <form action="{% url 'delete_product' product.pk %}" method="post">
-                        {% csrf_token %}
-                        {% include 'partials/delete_button.html' %}
-                    </form>
-                </td>
+                {% if perms.app.change_product %}
+                    <td>
+                        <a href="{% url 'update_product' product.pk %}" class="btn btn-primary">Update</a>
+                    </td>
+                {% endif %}
+
+                {% if perms.app.delete_product %}
+                    <td>
+                        <form action="{% url 'delete_product' product.pk %}" method="post">
+                            {% csrf_token %}
+                            {% include 'partials/delete_button.html' %}
+                        </form>
+                    </td>
+                {% endif %}
+
             </tr>
         {% endfor %}
 

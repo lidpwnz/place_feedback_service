@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views import generic
@@ -27,19 +28,25 @@ class ProfileView(generic.DetailView):
     template_name = 'user/profile.html'
 
 
-class UpdateUser(generic.UpdateView):
+class UpdateUser(UserPassesTestMixin, generic.UpdateView):
     model = User
     form_class = UserForm
     template_name = 'user/update.html'
+
+    def test_func(self):
+        return self.request.user == self.get_object()
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'pk': self.object.pk})
 
 
-class UpdatePassword(generic.UpdateView):
+class UpdatePassword(UserPassesTestMixin, generic.UpdateView):
     model = User
     form_class = ChangePasswordForm
     template_name = 'user/update.html'
+
+    def test_func(self):
+        return self.request.user == self.get_object()
 
     def form_valid(self, form):
         response = super(UpdatePassword, self).form_valid(form)
