@@ -127,7 +127,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 AVATAR_FOLDER = 'user_avatars'
-AVATAR_DEFAULT_VALUE = ''
+AVATAR_DEFAULT_VALUE = '/app_pics/imageNotAvailable_grid.png'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

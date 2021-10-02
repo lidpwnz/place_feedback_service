@@ -1,0 +1,93 @@
+[
+{
+    "model": "app.category",
+    "pk": 1,
+    "fields": {
+        "title": "Food"
+    }
+},
+{
+    "model": "app.category",
+    "pk": 2,
+    "fields": {
+        "title": "Drink"
+    }
+},
+{
+    "model": "app.category",
+    "pk": 3,
+    "fields": {
+        "title": "Phone"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 1,
+    "fields": {
+        "title": "Burger",
+        "category": 1,
+        "description": "Hello world",
+        "image": "user_avatars/conan_ataUg0Q.jpg"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 2,
+    "fields": {
+        "title": "Burger",
+        "category": 1,
+        "description": "Hello world",
+        "image": "user_avatars/conan_3QjSMtJ.jpg"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 3,
+    "fields": {
+        "title": "Cola",
+        "category": 2,
+        "description": "Кола - напиток, без которого не могут обойтись современные люди.\r\nЭто один из самых популярных напитков в России.\r\nЕго можно купить в любом магазине, а также сделать самостоятельно.\r\nДля его приготовления не потребуются особые навыки и знания.\r\nСостав этого напитка на 95% состоит из воды, поэтому его легко приготовить в любой момент.\r\nНесмотря на свою популярность, напиток имеет и ряд недостатков.\r\nВ этой статье мы рассмотрим основные из них, чтобы вы могли сделать правильный выбор.",
+        "image": "user_avatars/python_logo.webp"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 4,
+    "fields": {
+        "title": "iPhone XS",
+        "category": 3,
+        "description": "iPhone Xs и iPhone Xs Max - безрамочные смартфоны с потрясающей камерой, но они также имеют два недостатка, которые делают их очень привлекательными для покупки.\r\nОдин из них - то, что вы не можете менять батарею.\r\nВ то время как вы можете снимать селфи лицом к лицу и использовать Face ID, вам нужно будет ждать, когда батарея станет полностью разряженной или она полностью разрядится, чтобы изменить аккумулятор.",
+        "image": "user_avatars/celery_logo.png"
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 1,
+    "fields": {
+        "author": 1,
+        "product": 1,
+        "description": "На один раз сойдет",
+        "rate": 5
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 2,
+    "fields": {
+        "author": 1,
+        "product": 3,
+        "description": "Крутая тема",
+        "rate": 5
+    }
+},
+{
+    "model": "app.feedback",
+    "pk": 3,
+    "fields": {
+        "author": 1,
+        "product": 4,
+        "description": "Фигня",
+        "rate": 1
+    }
+}
+]
