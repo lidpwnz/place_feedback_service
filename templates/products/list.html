@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for product in products %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><a href="{% url 'detail_product' product.pk %}"
+                       class="text-dark text-decoration-none">{{ product.title }}</a></td>
+                <td>{{ product.category }}</td>
+                <td>
+                    <a href="{% url 'detail_product' product.pk %}"
+                       class="text-secondary">{{ product.description | slice:':15' }}...</a>
+                </td>
+                <td>
+                    <a href="{% url 'update_product' product.pk %}" class="btn btn-primary">Update</a>
+                </td>
+                <td>
+                    <form action="{% url 'delete_product' product.pk %}" method="post">
+                        {% csrf_token %}
+                        {% include 'partials/delete_button.html' %}
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
