@@ -10,7 +10,7 @@
             <h2>{{ product.title }}</h2>
             <small class="text-secondary">{{ product.category }}</small>
             <h5>
-                Average rate:
+                Average rate: {{ product.avg }}
                 {% my_range product.avg as range %}
                 <span class="text-warning">
 
