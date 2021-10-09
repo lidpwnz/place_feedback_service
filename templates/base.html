@@ -35,8 +35,13 @@
         step_size: 1,
         selected_symbol_type: 'fontawesome_star'
     }
-    $(".rating").rate(options);
-    $('.rating').on('click', (e) => {
+
+    {% block options %}{% endblock %}
+
+    const rating = $(".rating")
+    rating.rate(options);
+
+    rating.on('click', () => {
         let value = $(".rating").rate("getValue");
         $('#review_rating').val(value)
     })

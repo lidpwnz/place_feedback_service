@@ -14,8 +14,7 @@
 {% endif %}
 
 <label for="descr"> {{ form.description.label }}</label>
-<textarea name="description" class="form-control mb-3" id="descr">{% if form.description.value %}
-    {{ form.description.value }}{% endif %}
+<textarea name="description" class="form-control mb-3" id="descr">{% if form.description.value %}{{ form.description.value }}{% endif %}
 </textarea>
 {% if form.rate.errors %}
     {% for error in form.rate.errors %}

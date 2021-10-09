@@ -25,7 +25,7 @@ class RegisterView(generic.CreateView):
 class ProfileView(generic.DetailView):
     model = User
     context_object_name = 'user_obj'
-    template_name = 'user/profile.html'
+    template_name = '../templates/user/profile.html'
 
     def get_context_data(self, **kwargs):
         if self.request.user == self.object:
@@ -39,7 +39,7 @@ class ProfileView(generic.DetailView):
 class UpdateUser(UserPassesTestMixin, generic.UpdateView):
     model = User
     form_class = UserForm
-    template_name = 'user/update.html'
+    template_name = '../templates/user/update.html'
 
     def test_func(self):
         return self.request.user == self.get_object()
@@ -51,7 +51,7 @@ class UpdateUser(UserPassesTestMixin, generic.UpdateView):
 class UpdatePassword(UserPassesTestMixin, generic.UpdateView):
     model = User
     form_class = ChangePasswordForm
-    template_name = 'user/update.html'
+    template_name = '../templates/user/update.html'
 
     def test_func(self):
         return self.request.user == self.get_object()

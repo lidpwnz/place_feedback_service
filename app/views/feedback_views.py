@@ -17,7 +17,6 @@ class CreateFeedback(FeedbackAttrsMixin, LoginRequiredMixin, generic.CreateView)
         return get_object_or_404(Product, pk=self.kwargs.get('product_id'))
 
     def form_invalid(self, form):
-        print(1)
         self.request.session['invalid_form_data'] = self.request.POST
         return redirect(self.request.META['HTTP_REFERER'])
 
