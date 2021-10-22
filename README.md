@@ -6,4 +6,3 @@ passwd: username123
 login: admin
 passwd: username123
 
-В доп. Задании говно-код, так как нужно было раньше уезжать, но работает)
