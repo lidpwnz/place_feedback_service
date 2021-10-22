@@ -35,3 +35,9 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f'{self.product}, {self.rate} | {self.author}: {self.description}'
+
+    class Meta:
+        permissions = [
+            ('view_not_moderated', 'Can view not moderated feedbacks'),
+            ('change_not_moderated', 'Can change not moderated feedbacks')
+        ]

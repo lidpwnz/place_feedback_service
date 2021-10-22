@@ -6,3 +6,10 @@
         {% include 'partials/feedback_form.html' %}
     </form>
 {% endblock %}
+
+<script>
+    {% block options %}
+        options['initial_value'] = {{ form.rate.value }}
+    {% endblock %}
+</script>
+
